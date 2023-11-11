@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %} Detalle Asignatura {% endblock %}
+{% block content %}
+ <h1>{{ title }}</h1>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>{{ asignatura.name }}</strong>
+      {% if asignatura.isactive %}
+        <p>Activa</p>
+      {% else %}
+        <p>Desactivada</p>
+      {% endif %}
+      <button type="submit" class="btn btn-danger">¿Desea Desactivar la Asignatura?</button>
+      <a href="{% url 'asignaturas' %}">Cancelar</a>
+    </form>
+  </div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

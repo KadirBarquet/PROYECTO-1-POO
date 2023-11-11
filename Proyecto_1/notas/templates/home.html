@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %} Inicio {% endblock %}
+{% block content %}
+
+   <header class="text-center ">
+    <div class="container py-2 mt-5 border border-1 shadow rounded bg-info">
+           <h1 class="fw-bold text-white text-center ">{{title}}</h1>
+    </div>
+    
+    
+  </header>
+  
+  <main class="container d-flex flex-column py-2  border border-1 shadow rounded bg-white  ">
+   
+    <div class="row ">
+      <div class="col-md-12 text-center">
+        <img src="{% static 'img/imagen_inst.jpg' %}" class="img-fluid" alt="Imagen de una escuela" style="width: 550px; height: auto;">
+    
+      
+      </div>
+    </div>
+  </main>
+ 
+ 
+{% endblock content %}
+
+
+

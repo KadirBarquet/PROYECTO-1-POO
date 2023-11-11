@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Detalle Notas {% endblock %}
+{% block content %}
+ <h1>{{ title }}</h1>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>{{ nota.student }}</strong>
+      {% if nota.estado %}
+        <p>Aprobado</p>
+      {% else %}
+        <p>Reprobado</p>
+      {% endif %}
+      <button type="submit" class="btn btn-danger">¿Desea Aprobar al Estudiante?</button>
+      <a href="{% url 'notas' %}">Cancelar</a>
+    </form>
+  </div>
+
+{% endblock content %} 
+

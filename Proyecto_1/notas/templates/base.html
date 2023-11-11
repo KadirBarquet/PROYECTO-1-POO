@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head> 
+    {% load static%}
+    <meta charset="UTF-8" />
+    <meta name="author" content="Daniel Vera Paredes" />
+    <meta name="description" content="Registro de Notas" />
+    <meta name="keywords" content="estudiantes, asignaturas, profesor, notas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href={% static 'css/bootstrap.min.css' %}>
+    <link rel="stylesheet" href={% static 'css/estilos.css' %}>
+    <style>
+      .navbar {
+        background-color: #3498db !important; /* Fondo azul para el navbar */
+      }
+
+      .navbar-nav .nav-link {
+        color: #ffffff !important; /* Texto blanco para los enlaces del navbar */
+      }
+
+      .nav-link.active {
+        color: #ffffff !important; /* Texto blanco para el enlace activo */
+      }
+
+      .btn-success {
+        background-color: #3498db !important; /* Fondo azul para los botones de éxito */
+        border-color: #3498db !important; /* Borde azul para los botones de éxito */
+        color: #ffffff !important; /* Texto blanco para los botones de éxito */
+      }
+
+      .btn-warning {
+        background-color: #f39c12 !important; /* Fondo amarillo para los botones de advertencia */
+        border-color: #f39c12 !important; /* Borde amarillo para los botones de advertencia */
+        color: #ffffff !important; /* Texto blanco para los botones de advertencia */
+      } 
+
+      .user-image {
+        width: 40px;
+        height: 40px;
+        object-fit: cover; /* Ajusta el comportamiento del contenido de la imagen */
+        border-radius: 5px; /* Puedes ajustar el valor según lo que desees */
+        margin-left: 10px;
+      } 
+    </style> 
+    <title>{% block title %} {% endblock %}</title>
+    <!-- fuentes de google font -->
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg bg-success" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">UNIVERSIDAD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href={% url 'home' %}>Inicio
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'students' %}">Estudiantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'facultades' %}">Facultad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'carreras' %}">Carrera</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'asignaturas' %}">Asignaturas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profesores' %}">Profesor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'semestres' %}">Semestre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'notas' %}">Notas</a>
+            </li>
+            
+          
+        
+          </ul>
+          <ul class="navbar-nav me-right">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+              </li>
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                  {% if user.profile.image %}
+                    <span style="color: white;">Usuario:</span> <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" class="user-image" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ user.username }}"> 
+                  {% else %} 
+                    <span style="color: white;">Usuario:</span> <img src="/media/user.jpg" alt="{{ user.username }}" class="user-image" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ user.username }}"> 
+                  {% endif %} 
+                {% else %} 
+                  <span style="color: white;">Usuario:</span> <span class="text-warning">{{ user.username }}</span> 
+                {% endif %}
+              </li> 
+            {% else %} 
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
+              </li>  
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+   </nav>
+   <!-- nav>ul>li*4>a -->
+   
+   {% block content %}
+      
+   {% block script %}
+
+   {% endblock script %}
+
+   {% endblock content %}
+   
+     <script src={% static 'js/bootstrap.min.js' %}> </script>
+     <script src={% static 'js/bootstrap.bundle.min.js' %}> </script>
+     <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+      </script>
+ </body>
+</html> 
+
+
+

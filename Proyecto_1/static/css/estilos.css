@@ -1,0 +1,19 @@
+.tooltip-inner {
+  color: #ffffff; /* Texto blanco */
+}
+
+.tooltip-arrow::before {
+  background-color: #000000; /* Negro */
+}
+
+.tooltip-inner {
+  background-color: #3498db; /* Azul */
+}
+
+
+
+
+
+
+
+

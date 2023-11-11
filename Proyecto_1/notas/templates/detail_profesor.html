@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Detalle Docente {% endblock %}
+{% block content %}
+ <h1>{{title}}</h1>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>{{profesor.lastname}} {{profesor.firstname}}</strong>
+      {% if profesor.isactive %}
+        <p>Disponible</p>
+      {% else %}
+        <p>No Disponible</p>
+      {% endif %}
+      <button type="submit">¿Desea Deshabilitar al Docente?</button>
+      <a href="{% url 'profesores' %}">Cancelar</a>
+    </form>
+  </div>
+
+{% endblock content %} 
+

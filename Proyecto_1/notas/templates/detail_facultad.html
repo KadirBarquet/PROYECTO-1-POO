@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Detalle Facultad {% endblock %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>{{ facultad.description }}</strong>
+      {% if facultad.isactive %}
+        <p>Activa</p>
+      {% else %}
+        <p>Desactivada</p>
+      {% endif %}
+      <button type="submit" class="btn btn-danger">¿Desea Desactivar la Facultad?</button>
+      <a href="{% url 'facultades' %}">Cancelar</a>
+    </form>
+  </div>
+{% endblock content %}
+
+

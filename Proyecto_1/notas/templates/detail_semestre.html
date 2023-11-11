@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Detalle Semestre {% endblock %}
+{% block content %}
+ <h1>{{ title }}</h1>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>{{ semestre.description }}</strong>
+      {% if semestre.estado %}
+        <p>Activa</p>
+      {% else %}
+        <p>Desactivada</p>
+      {% endif %}
+      <button type="submit" class="btn btn-danger">¿Desea Desactivar el Semestre?</button>
+      <a href="{% url 'semestres' %}">Cancelar</a>
+    </form>
+  </div>
+
+{% endblock content %} 
+
